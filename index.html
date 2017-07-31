@@ -257,7 +257,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/2017/2017-07-31-ios_block/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="anranos">
@@ -276,7 +276,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/31/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2017/07/31/2017/2017-07-31-ios_block/" itemprop="url">block源码分析</a></h1>
         
 
         <div class="post-meta">
@@ -288,7 +288,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T13:36:54+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T14:54:16+08:00">
                 2017-07-31
               </time>
             
@@ -325,16 +325,7 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+            
           
         
       
@@ -377,7 +368,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/23/2017/2017-01-06-setstatusbarorientation-not-working/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/2017/2017-07-31-ios_dispatch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="anranos">
@@ -396,7 +387,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/23/2017/2017-01-06-setstatusbarorientation-not-working/" itemprop="url">setStatusBarOrientation:animated: not working</a></h1>
+                <a class="post-title-link" href="/2017/07/31/2017/2017-07-31-ios_dispatch/" itemprop="url">dispatch_async & dispatch_sync</a></h1>
         
 
         <div class="post-meta">
@@ -408,8 +399,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-23T00:41:20+08:00">
-                2017-02-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T14:51:45+08:00">
+                2017-07-31
               </time>
             
 
@@ -445,18 +436,7 @@
       
         
           
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>有个视频播放页面需要手动控制页面的横竖屏状态，使用setStatusBarOrientation可以达到这个效果；<br>但是很奇怪的事情发生了，我们发现代码在某台机器的某种情况下会出现setStatusBarOrientation调用无效。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>直接的原因是我们使用了BugTags，并且在白名单用户登录后打开了BugTags的悬浮小球，悬浮小球出现的时候setStatusBarOrientation调用就会无效；</p>
-<p>分析后发现真正的原因是，页面已经不是the top-most full-screen view controller了：</p>
-<blockquote>
-<p>The setStatusBarOrientation:animated: method is not deprecated outright. It now works only if the supportedInterfaceOrientations method of the top-most full-screen view controller returns 0</p>
-</blockquote>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>知道原因就简单了，需要全屏的时候隐藏BugTags的悬浮球即可</p>
-<blockquote>
-<p>BTGInvocationEventNone</p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://stackoverflow.com/questions/12563954/setstatusbarorientationanimated-not-working-in-ios-6" target="_blank" rel="external">setStatusBarOrientation:animated: not working in iOS 6</a><br><a href="http://blog.csdn.net/ginhoor/article/details/20454229" target="_blank" rel="external">setStatusBarOrientation 未生效的解决办法</a></p>
-
+            
           
         
       
@@ -499,7 +479,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/23/2017/2017-02-08-ignore-sigpipe-crash/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/2017/2017-07-31-ios_category/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="anranos">
@@ -518,7 +498,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/23/2017/2017-02-08-ignore-sigpipe-crash/" itemprop="url">ignore SIGPIPE crash</a></h1>
+                <a class="post-title-link" href="/2017/07/31/2017/2017-07-31-ios_category/" itemprop="url">category源码分析</a></h1>
         
 
         <div class="post-meta">
@@ -530,8 +510,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-23T00:41:20+08:00">
-                2017-02-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T14:49:23+08:00">
+                2017-07-31
               </time>
             
 
@@ -567,20 +547,7 @@
       
         
           
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>由于使用了Multipeer Connectivity和NSOutputStream，在某些网络环境切换的情况下，总是会遇到这样的crash：</p>
-<blockquote>
-<p>Signal 13 was raised. SIGPIPE</p>
-</blockquote>
-<p>查找资料后，发现最简单的解决方案就是忽略这个错误：</p>
-<blockquote>
-<p>signal(SIGPIPE, SIG_IGN);</p>
-</blockquote>
-<p>但实际的结果是我们设置了还是会继续出现闪退</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>排查了很久后才发现，问题的原因是BugTags也会控制这个开头，默认是不忽略，而且这个默认显然代码是主动调用了，而不是我们期望的不调用就不设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 是否忽略 PIPE Signal (SIGPIPE) 闪退，默认 NO</div><div class="line"> */</div><div class="line">@property(nonatomic, assign) BOOL ignorePIPESignalCrash;</div></pre></td></tr></table></figure></p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>设置BugTags的对应开关即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// Bugtags</div><div class="line">BugtagsOptions *options = [[BugtagsOptions alloc] init];</div><div class="line">options.ignorePIPESignalCrash = YES;</div><div class="line">[Bugtags startWithAppKey:BugTagsAPPKEY invocationEvent:BTGInvocationEventNone options:options];</div></pre></td></tr></table></figure></p>
-<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>这个问题我们排查了很久，一直在找我们自己的原因，但其实这种bug因为跟网络环境有关系不容易重现；<br>其实反思后发现，排查这个问题我们应该先做一个事情，就是手动出发SIGNAL 13，看闪退是否被正确忽略；<br>而我们恰恰没做这个事情，思路上的疏漏导致了之前的大量工作变成了无用功。</p>
-<h2 id="参考材料"><a href="#参考材料" class="headerlink" title="参考材料"></a>参考材料</h2><p><a href="http://www.jianshu.com/p/1957d2b18d2c" target="_blank" rel="external">如何在 iOS 上避免 SIGPIPE 信号导致的 crash (Avoiding SIGPIPE signal crash in iOS)</a><br><a href="https://developer.apple.com/reference/foundation/nsstream/1410399-close?language=objc" target="_blank" rel="external">NSStream close</a><br><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Streams/Articles/WritingOutputStreams.html" target="_blank" rel="external">Writing OutputStreams</a><br><a href="http://www.cnblogs.com/kesalin/archive/2013/04/29/ios_network_nsstream.html" target="_blank" rel="external">[深入浅出Cocoa]iOS网络编程之NSStream</a><br><a href="http://iphonedevsdk.com/forum/iphone-sdk-development/21065-how-to-make-a-nsstream-instance-reusable.html" target="_blank" rel="external">How to make a NSStream instance reusable?</a></p>
-
+            
           
         
       
@@ -623,7 +590,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/23/2017/2017-02-17-proxychain4-pod-update-failed/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/2017/2017-07-31-ios_load/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="anranos">
@@ -642,7 +609,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/23/2017/2017-02-17-proxychain4-pod-update-failed/" itemprop="url">升级到Sierra后proxychains4 pod update失败</a></h1>
+                <a class="post-title-link" href="/2017/07/31/2017/2017-07-31-ios_load/" itemprop="url">iOS + (void)load方法详解</a></h1>
         
 
         <div class="post-meta">
@@ -654,8 +621,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-23T00:41:20+08:00">
-                2017-02-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T14:35:04+08:00">
+                2017-07-31
               </time>
             
 
@@ -691,200 +658,7 @@
       
         
           
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>我的问题是proxychains4 telnet 是没问题的，但是proxychains4 pod update就会报下面这样的警告，然后失败：</p>
-<blockquote>
-<p>[proxychains] preloading ./libproxychains4.dylib<br>dyld: warning: could not load inserted library ‘./libproxychains4.dylib’ into library validated process because no suitable image found. Did find:<br>./libproxychains4.dylib: code signing blocked mmap() of ‘./libproxychains4.dylib’</p>
-</blockquote>
-<h3 id="我的环境如下："><a href="#我的环境如下：" class="headerlink" title="我的环境如下："></a>我的环境如下：</h3><ul>
-<li>macOS Sierra 10.12.3</li>
-<li>proxychains-ng 4.12_1</li>
-<li>SIP之前配置过用的是：csrutil enable –without debug，查询的状态如下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ csrutil status</div><div class="line">System Integrity Protection status: enabled (Custom Configuration).</div><div class="line"></div><div class="line">Configuration:</div><div class="line">	Apple Internal: disabled</div><div class="line">	Kext Signing: enabled</div><div class="line">	Filesystem Protections: enabled</div><div class="line">	Debugging Restrictions: disabled</div><div class="line">	DTrace Restrictions: enabled</div><div class="line">	NVRAM Protections: enabled</div><div class="line">	BaseSystem Verification: enabled</div><div class="line"></div><div class="line">This is an unsupported configuration, likely to <span class="built_in">break</span> <span class="keyword">in</span> the future and leave your machine <span class="keyword">in</span> an unknown state.</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="寻找原因"><a href="#寻找原因" class="headerlink" title="寻找原因"></a>寻找原因</h2><p>一开始是找到了这篇issues:<a href="https://github.com/rofl0r/proxychains-ng/issues/109" target="_blank" rel="external">Proxychains4 with brew for MacOs error #109</a>，以为是我的proxychains4版本问题或者是我的SIP问题，所以做了以下尝试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"># 进入系统的recovery mode，禁用SIP</div><div class="line">csrutil disable</div><div class="line">reboot</div><div class="line"></div><div class="line"># 重启后卸载老的proxychains</div><div class="line">brew tap beeftornado/rmtree</div><div class="line">brew rmtree proxychains-ng</div><div class="line"></div><div class="line"># 重新安装</div><div class="line">proxychains-ng --universal</div><div class="line"></div><div class="line"># 确认下proxychains-ng的配置是否正确，如果不正确就再配置下proxychains.conf</div><div class="line"># 确认下telnet是否正常</div><div class="line">proxychains4 telnet google.com 80</div><div class="line"></div><div class="line"># 再尝试下pod update</div><div class="line">proxychains4 pod update</div><div class="line"></div><div class="line"># 问题依旧：code signing blocked mmap()</div></pre></td></tr></table></figure></p>
-<h2 id="问题所在"><a href="#问题所在" class="headerlink" title="问题所在"></a>问题所在</h2><p>在另外一个issue78:<a href="https://github.com/rofl0r/proxychains-ng/issues/78" target="_blank" rel="external">Not working on OS X 10.11 due to SIP #78</a>中看到了被点赞了4次的这个回答，让我最后解决了问题：</p>
-<blockquote>
-<p>It only happens if you execute a system binary using proxychains, e.g. proxychains4 ssh user@server. For now, a workaround is to copy the executable to another location (e.g. cp /usr/bin/ssh ~/XXX), and use it (e.g. proxychains4 ~/XXX/ssh user@server). You can modify the path variable so that ~/XXX/ssh is executed instead of /usr/bin/ssh, when you just type “ssh”.</p>
-</blockquote>
-<h3 id="一句话描述问题："><a href="#一句话描述问题：" class="headerlink" title="一句话描述问题："></a>一句话描述问题：</h3><blockquote>
-<p>proxychain尝试注入系统bin目录下的二进制文件会出现这种情况，解决方案就是换个非系统目录的文件来执行和注入就可以了。</p>
-</blockquote>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>根据上面的问题描述，再考虑pod update的实际操作，其实就是调用git去更新，而我的git用的是系统自带的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ which git</div><div class="line">/usr/bin/git</div></pre></td></tr></table></figure></p>
-<p>这样一来问题就变成了让pod update使用我自己安装的git就可以了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">brew install git</div><div class="line"></div><div class="line"># 修改.bash_profile，增加下面的export配置，优先搜索/usr/local/bin目录</div><div class="line"># 这样修改后，terminal下使用git就会优先使用我们刚刚安装的git版本了</div><div class="line">export PATH=/usr/local/bin:/usr/local/sbin:$&#123;PATH&#125;</div></pre></td></tr></table></figure></p>
-<p>好了，配置好了，再试一下，成功了:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxychains4 pod update</div></pre></td></tr></table></figure></p>
-<h3 id="关于SIP"><a href="#关于SIP" class="headerlink" title="关于SIP"></a>关于SIP</h3><p>最后我验证了下，SIP其实不需要disable，csrutil enable –without debug下proxychains也是能正常工作的</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>说下我这里能够正常运行的环境和因素：</p>
-<ul>
-<li>macOS Sierra 10.12.3</li>
-<li>proxychains-ng 4.12_1</li>
-<li><p>进入系统的recovery mode，打开terminal，csrutil enable –without debug<br>可以使用这个命令查询的状态，我的状态如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ csrutil status</div><div class="line">System Integrity Protection status: enabled (Custom Configuration).</div><div class="line"></div><div class="line">Configuration:</div><div class="line">	Apple Internal: disabled</div><div class="line">	Kext Signing: enabled</div><div class="line">	Filesystem Protections: enabled</div><div class="line">	Debugging Restrictions: disabled</div><div class="line">	DTrace Restrictions: enabled</div><div class="line">	NVRAM Protections: enabled</div><div class="line">	BaseSystem Verification: enabled</div><div class="line"></div><div class="line">This is an unsupported configuration, likely to <span class="built_in">break</span> <span class="keyword">in</span> the future and leave your machine <span class="keyword">in</span> an unknown state.</div></pre></td></tr></table></figure>
-</li>
-<li><p>我的git使用的是brew install git的版本:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ which git</div><div class="line">/usr/local/bin/git</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="参考材料"><a href="#参考材料" class="headerlink" title="参考材料"></a>参考材料</h2><p><a href="https://github.com/rofl0r/proxychains-ng/issues/78" target="_blank" rel="external">Not working on OS X 10.11 due to SIP #78</a><br><a href="https://github.com/rofl0r/proxychains-ng/issues/109" target="_blank" rel="external">Proxychains4 with brew for MacOs error #109</a><br><a href="https://github.com/rofl0r/proxychains-ng/issues/159" target="_blank" rel="external">code signing blocked mmap() #159</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/23/2017/2017-02-23-traffic-raiders-for-kansai-tourist/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="anranos">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="卸载重装">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/23/2017/2017-02-23-traffic-raiders-for-kansai-tourist/" itemprop="url">关西旅行交通攻略</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-23T00:41:20+08:00">
-                2017-02-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>2017年1月份，我和老婆带着未满3岁的儿子，从珠海出发，经由香港机场飞往日本大阪关西机场，并在大阪、京都、神户自由行了一个礼拜。</p>
-<p>机票、酒店和游玩的行程安排都是老婆负责，而我负责的部分是游玩过程中的交通，结果只能算勉强及格，至少没走丢；这里我要分享的就是些关西旅行交通方面的经验教训。</p>
-<h2 id="地图应用"><a href="#地图应用" class="headerlink" title="地图应用"></a>地图应用</h2><p>说交通怎么能不先说地图呢？我使用Google Map，需要提前买个日本3G上网卡；无论是地铁还是公交车，Google Map都能比较好的导航到搭车的地方，还有列车时刻表；你可以选择不同的地铁或公交线路；有个特别好的是，你在搭地铁的过程中，如果听不懂日语报站名，或者有些列车没有电子指示当前到哪一站了，这个时候你拿出手机看下Google Map，之前搜索的地铁路线包含了各个途径地铁站的名字和你当前的位置，非常实用。</p>
-<h2 id="关西的铁路交通"><a href="#关西的铁路交通" class="headerlink" title="关西的铁路交通"></a>关西的铁路交通</h2><p>日本的铁路交通太发达了，所以铁路交通也是关西旅行交通的重头戏。</p>
-<p>如果对日本的铁路交通完全没有概念的话，我建议先看下这个网站：<a href="https://www.westjr.co.jp/global/sc/" target="_blank" rel="external">西日本旅客铁道株式会社</a>，这是JR-West的官方网站，有中文版；我是回国之后整理攻略才知道的这个网站，后悔莫及，网上各种攻略很多，但都没这个全面实用，走了不少弯路。</p>
-<p>JR只是日本众多铁路公司中的一个，不过乘车的规则什么的基本都是类似的，所以你看了JR的乘车指南，再搭乘其他公司的铁路交通，会比较轻车熟路。</p>
-<h3 id="列车种类"><a href="#列车种类" class="headerlink" title="列车种类"></a>列车种类</h3><p>官方分类看这里：<a href="https://www.westjr.co.jp/global/sc/howto/train_01.html#fqtop" target="_blank" rel="external">列车种类</a></p>
-<p>高铁(新幹線)、特快(特急列車)、快速(急行列車)、管内快速(新快速)、普快(快速)、普客(普通列車)</p>
-<p>这么多分类，我自己搭乘后的经验是，其实就分三类就够了：<br>新干线、急行、普通。</p>
-<p>不同类型的列车，除了车票价格的区别，买票方式上也有区别：<br>新干线需要单独买票，不能刷卡；<br>急行和普通的可以先刷IC卡进站，想要快的话，看到急行车上车后再补票，只是不一定能补到指定席。</p>
-<h3 id="车票分类"><a href="#车票分类" class="headerlink" title="车票分类"></a>车票分类</h3><p>关键字：乘车券、自由席、指定席、急行券、新干线</p>
-<p>在日本搭乘铁路交通，你至少需要“乘车券”；<br>在购票时你可以选择是自由席还是指定席；<br>而如果你想要搭乘急行或快速的列车，你还需要购买“急行券”；</p>
-<p>上述几个选项是可以组合的，最便宜的是自由席乘车券，最贵的是指定席急行券；<br>需要注意的是并不是每个路线都有急行列车，需要提前查好车次；<br>还有就是日本的快车和慢车都是在同一个乘车站台，做错慢车的话很有可能早上车却更晚到达目的地。</p>
-<p>还是没看明白的，可以看下JR-West的相关说明：<a href="https://www.westjr.co.jp/global/sc/howto/ticket_02.html#fq07" target="_blank" rel="external">搭乘JR-West的方法 购买车票</a></p>
-<h3 id="交通IC卡"><a href="#交通IC卡" class="headerlink" title="交通IC卡"></a>交通IC卡</h3><p>各种日本旅行攻略里经常提到的交通IC卡主要是Suica和ICOCA，这两种卡目前都已经是日本全国通用了。</p>
-<p>两个单词的读音可以提前学习下，因为这个卡的使用频率非常高：</p>
-<blockquote>
-<p>Suica（スイカ），读音类似：[su i ga]<br>ICOCA（イコカ），读音类似：[i ko ga]</p>
-</blockquote>
-<p>我用的是ICOCA，关西机场自动售卖机上能买到的也就是这个了，除了新干线需要单独购买乘车券，其他铁路只要不是指定席或者急行券，都可以直接刷卡上车，不用单独买票；另外市内公交车和便利店也能刷ICOCA。</p>
-<h3 id="ICOCA-amp-HARUKA"><a href="#ICOCA-amp-HARUKA" class="headerlink" title="ICOCA &amp; HARUKA"></a>ICOCA &amp; HARUKA</h3><p>因为我们的到达机场是关西机场，第一站去的是京都，这里说下从关西机场到京都最快最划算的方式：ICOCA &amp; HARUKA</p>
-<p>官方介绍看这里：<a href="https://www.westjr.co.jp/global/sc/ticket/icoca-haruka/" target="_blank" rel="external">ICOCA &amp; HARUKA</a></p>
-<p>这个有多快捷呢？<br>从关西机场到京都站，这是最快的方式，没有之一。</p>
-<p>这个有多划算呢？<br>从关西机场搭大巴车到京都应该是要1800日元，而这个ICOCA &amp; HARUKA折扣券是1600日元。</p>
-<p>又快又便宜，哪来这么好的事情；<br>原因在于他是和ICOCA卡捆绑销售的；<br>ICOCA本身第一次购买的话是需要2000日元，其中包含500日元押金；<br>虽然是捆绑销售，但是我上面提到了ICOCA和Suica已经全日本通用，而且便利店买东西也能用，其实2000日元很快就花完了的，万一万一花不完还可以退卡（虽然我不推荐退卡）。</p>
-<p>特别要注意的是购买方法：只能在JR的绿色办公室里面购买！<br>关西机场的JR绿色办公室就在JR地铁入口的对面，在一排自动售卖机的右手边，进去找人买就对了，在自动售卖机上是买不到的（T_T）。</p>
-<h3 id="儿童乘车"><a href="#儿童乘车" class="headerlink" title="儿童乘车"></a>儿童乘车</h3><p>12岁以上算大人、6岁至11岁算儿童、1岁至5岁算幼儿、未满1岁算婴儿；<br>每名大人最多可免费携带2名幼儿同行；<br>简单说就是5岁以下的小朋友，大人带着不要钱，不用买票。</p>
-<p>这里再说下新干线买票的事情，因为我们当时带着小孩，没有买指定席，结果上车后带着小孩和行李换了好几次位置，乘务员说没办法补指定席的票，很麻烦，所以带小孩坐新干线的话最好直接买指定席。</p>
-<h2 id="公交车"><a href="#公交车" class="headerlink" title="公交车"></a>公交车</h2><p>我们只在京都坐了公交车，京都的东西南北分布着各种寺庙，但并不是每个寺庙都有地铁直达，这时候就需要市内公交发挥作用了。</p>
-<p>提前用Google Map查好公交转乘的路线，还是挺方便的。</p>
-<p>Google Map的路线是没问题的，但公交车站台位置不是很准，如果你到了一个站台发现没有Google Map提示的那个公交线路站牌，比如说你要坐25路，结果站牌上怎么都找不到25路的站牌，那肯定是你走错公交站了，再找找看吧。</p>
-<p>坐公交车还需要注意的是，如果你下一站下车，到站之前记得按下车上随处可见的红色按钮（不骗你，真的是随处可见）。</p>
-<h2 id="的士"><a href="#的士" class="headerlink" title="的士"></a>的士</h2><p>都说日本打车贵，一开始都不太敢尝试，但是行李太多了，我们从酒店去京都站搭新干线的时候，还是打了个的士：</p>
-<blockquote>
-<p>3.2KM，1100日元，折合人民币60多块钱</p>
-</blockquote>
-<p>跟国内比肯定是贵很多，但是你要知道日本的地铁也不便宜；<br>我们还要拿着两件大行李，一个婴儿车，这么算的话价格还是可以接受的。</p>
-<p>的士作为一种交通途径，在合适的时候还是可以选用的，并不是天价。</p>
-<h2 id="长途大巴"><a href="#长途大巴" class="headerlink" title="长途大巴"></a>长途大巴</h2><p>我们从神户有马温泉去大阪的时候搭乘的是大巴车，车上10个人不到；<br>想不到的是大巴车上竟然没什么味道，更没有国内大巴车上那种无法描述的奇怪的大巴车味道……</p>
-<p>大巴车快到大阪的时候，最左边的车道堵车堵了大概有10公里，但是右边的两个车道都还在正常快速行驶；中间好几次我都在想为什么右边这么快，没有人变道？后面才知道这10多公里的车都在排队下高速，高速出口有点堵车，但是只堵了最左边的一条道而已，佩服。</p>
-<h2 id="交通IC卡充值"><a href="#交通IC卡充值" class="headerlink" title="交通IC卡充值"></a>交通IC卡充值</h2><p>地铁站买票的自动售卖机可以充值；<br>地铁站里面有精算机可以充值；<br>便利店可以充值。</p>
-<h2 id="关于问路"><a href="#关于问路" class="headerlink" title="关于问路"></a>关于问路</h2><p>日本人英语听力都还不错，只是不太愿意说，你要是英文好的话直接英文问路完全没问题。</p>
-<p>我的做法是，用有道翻译，把问路的关键字翻译成日语；注意是只是关键字而已，不要整个句子，因为我的实践结果告诉我，翻译句子比较坑；把关键字的日文给日本人看下，他们基本能猜猜八九不离十；实在不行再配合两句蹩脚的英语，嗯，应该可以了…… </p>
-<p>还不行的话你就比划比划或者试下眼神交流吧</p>
-<h2 id="对这次旅行交通的整体感受"><a href="#对这次旅行交通的整体感受" class="headerlink" title="对这次旅行交通的整体感受"></a>对这次旅行交通的整体感受</h2><p>准时，方便，不需要像国内那样预留太多的时间。</p>
-<p>费用方面，这次旅行在关西交通上的花费，只是旅行费用中比较小的一部分；<br>我们也没有使用更划算的周游券，主要是因为我们带着小孩，行程本来就不固定，而且我们是三个城市走马观花式的自由行，不太适合；</p>
-<p>只要行程确认，交通攻略上一个Google Map也就够了，还都是中文界面；<br>日本的交通很发达但也很规范，熟悉了规则之后会发现，日本的交通出行其实比你在国内一个陌生城市还要简单。</p>
-<p>== The End ==</p>
-
           
         
       
@@ -964,7 +738,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -972,15 +746,6 @@
 
           
 
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">标签</span>
-              
-            </div>
           
 
         </nav>
