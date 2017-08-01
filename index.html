@@ -179,7 +179,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">搞点自己的东西。。。</p>
       
   </div>
 
@@ -247,6 +247,120 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/2017/2017-07-31-java_one/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="anranos">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卸载重装">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/31/2017/2017-07-31-java_one/" itemprop="url">java基础学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T21:55:49+08:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="语法基础"><a href="#语法基础" class="headerlink" title="语法基础"></a>语法基础</h2><h3 id="one"><a href="#one" class="headerlink" title="one"></a>one</h3><ul>
+<li>环境搭建</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -387,7 +501,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/31/2017/2017-07-31-ios_dispatch/" itemprop="url">dispatch_async & dispatch_sync</a></h1>
+                <a class="post-title-link" href="/2017/07/31/2017/2017-07-31-ios_dispatch/" itemprop="url">dispatch_async && dispatch_sync</a></h1>
         
 
         <div class="post-meta">
@@ -609,7 +723,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/31/2017/2017-07-31-ios_load/" itemprop="url">iOS + (void)load方法详解</a></h1>
+                <a class="post-title-link" href="/2017/07/31/2017/2017-07-31-ios_load/" itemprop="url">+ (void)load方法详解</a></h1>
         
 
         <div class="post-meta">
@@ -658,7 +772,233 @@
       
         
           
+            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><blockquote>
+<p>   之前在写代码的时候对于 + (void)load 这个方法很常见，一般理解为类初始化的时候会去调用，但其原理不甚明白这篇博客简要的介绍一下 + (void)load 的源码层面的分析</p>
+</blockquote>
+<h2 id="dyld-动态连接器"><a href="#dyld-动态连接器" class="headerlink" title="dyld 动态连接器"></a>dyld 动态连接器</h2><p>dyld的介绍可以通过这篇文章(<a href="https://objccn.io/issue-6-3/" target="_blank" rel="external">Mach-O 可执行文件</a>)，简要来说就是它主要加载一些动态库，而且dyld共享缓存机制也缓解了加载多个动态库耗费时间长的问题</p>
+<p>dyld共享缓存</p>
+<blockquote>
+<p>当你构建一个真正的程序时，将会链接各种各样的库。它们又会依赖其他一些 framework 和 动态库。需要加载的动态库会非常多。而对于相互依赖的符号就更多了。可能将会有上千个符号需要解析处理，这将花费很长的时间：一般是好几秒钟。<br>为了缩短这个处理过程所花费时间，在 OS X 和 iOS 上的动态链接器使用了共享缓存，共享缓存存于 /var/db/dyld/。对于每一种架构，操作系统都有一个单独的文件，文件中包含了绝大多数的动态库，这些库都已经链接为一个文件，并且已经处理好了它们之间的符号关系。当加载一个 Mach-O 文件 (一个可执行文件或者一个库) 时，动态链接器首先会检查 共享缓存 看看是否存在其中，如果存在，那么就直接从共享缓存中拿出来使用。每一个进程都把这个共享缓存映射到了自己的地址空间中。这个方法大大优化了 OS X 和 iOS 上程序的启动时间。</p>
+</blockquote>
+<p><img src="http://wx4.sinaimg.cn/mw690/005Krugjly1fi40fucczbj321k0ywgvr.jpg" width="580" height="220"></p>
+<p>通过上图可以看到在执行到+(void)load之前，函数调用的堆栈信息，</p>
+<ul>
+<li>首先是dyld_start 函数 进入到dyld_main函数的入口，通过imageloader递归加载一系列的二进制文件一直到notify:single这下面都是dyld这个在调用</li>
+<li>notify:single这个函数其实就是通知runtime函数开始执行，这个通知函数是在_objc_init这个函数里面初始化的，</li>
+<li>imageloader这个函数其实就是读取了我们image，也就是将符号化的类和文件加载到内存之后会通知runtime开始调用load系列函数</li>
+<li>其实总结起来就是dyld-&gt;(动态库，符号化类，文件等)-&gt;objc初始化(_objc_init)-&gt;通知runtime调用load系列函数</li>
+</ul>
+<h2 id="objc-init"><a href="#objc-init" class="headerlink" title="_objc_init"></a>_objc_init</h2><p>为_objc_init设置一个符号断点观察这个初始化函数的调用栈如下图</p>
+<p><img src="http://wx3.sinaimg.cn/mw690/005Krugjly1fi386x1y85j30m80gumyv.jpg" width="400" height="250"></p>
+<p>通过设置断点可以看出_objc_init函数的调用栈，它的调用时机是在libsystem_initializer之后由libSystem调用的,这点也验证了_objc_init源码中的注释</p>
+<blockquote>
+<pre><code>New ABI: called by libSystem BEFORE library initialization time
+</code></pre></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/***********************************************************************</div><div class="line">* _objc_init</div><div class="line">* Bootstrap initialization. Registers our image notifier with dyld.</div><div class="line">* Old ABI: called by dyld as a library initializer</div><div class="line">* New ABI: called by libSystem BEFORE library initialization time</div><div class="line">**********************************************************************/</div><div class="line">void _objc_init(void)</div><div class="line">&#123;</div><div class="line">    static bool initialized = false;</div><div class="line">    if (initialized) return;</div><div class="line">    initialized = true;</div><div class="line">    </div><div class="line">    // fixme defer initialization until an objc-using image is found?</div><div class="line">    environ_init();</div><div class="line">    tls_init();</div><div class="line">    static_init();</div><div class="line">    lock_init();</div><div class="line">    exception_init();</div><div class="line">        </div><div class="line">    // Register for unmap first, in case some +load unmaps something</div><div class="line">    _dyld_register_func_for_remove_image(&amp;unmap_image);</div><div class="line">    dyld_register_image_state_change_handler(dyld_image_state_bound,</div><div class="line">                                             1/*batch*/, &amp;map_2_images);</div><div class="line">    dyld_register_image_state_change_handler(dyld_image_state_dependents_initialized, 0/*not batch*/, &amp;load_images);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来再看这个函数源码中的分析</p>
+<ul>
+<li>这个函数中环境变量等初始化</li>
+<li>加载image到内存中</li>
+<li>调用loadimages方法</li>
+</ul>
+<h2 id="load系列函数"><a href="#load系列函数" class="headerlink" title="load系列函数"></a>load系列函数</h2><p>上面分析过了load函数是通过runtime来调用的，首先看下runtime初始化入口，也就是_objc_init函数</p>
+<h3 id="load-images"><a href="#load-images" class="headerlink" title="load_images"></a>load_images</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">/***********************************************************************</div><div class="line">* load_images</div><div class="line">* Process +load in the given images which are being mapped in by dyld.</div><div class="line">* Calls ABI-agnostic code after taking ABI-specific locks.</div><div class="line">*</div><div class="line">* Locking: write-locks runtimeLock and loadMethodLock</div><div class="line">**********************************************************************/</div><div class="line">const char *</div><div class="line">load_images(enum dyld_image_states state, uint32_t infoCount,</div><div class="line">            const struct dyld_image_info infoList[])</div><div class="line">&#123;</div><div class="line">    bool found;</div><div class="line"></div><div class="line">    // Return without taking locks if there are no +load methods here.</div><div class="line">    found = false;</div><div class="line">    for (uint32_t i = 0; i &lt; infoCount; i++) &#123;</div><div class="line">        if (hasLoadMethods((const headerType *)infoList[i].imageLoadAddress)) &#123;</div><div class="line">            found = true;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    if (!found) return nil;</div><div class="line"></div><div class="line">    recursive_mutex_locker_t lock(loadMethodLock);</div><div class="line"></div><div class="line">    // Discover load methods</div><div class="line">    &#123;</div><div class="line">        rwlock_writer_t lock2(runtimeLock);</div><div class="line">        found = load_images_nolock(state, infoCount, infoList);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Call +load methods (without runtimeLock - re-entrant)</div><div class="line">    if (found) &#123;</div><div class="line">        call_load_methods();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>load_images:首先看下这个函数里面几个重要的函数</p>
+<ul>
+<li>hasLoadMethods:第一段代码是先从imageload信息中判断是否有load方法的符号化地址，如果有的话将bool变量found置为true。</li>
+<li>load_images_nolock:第二查找load方法，因为前面如果找到了load的符号化地址的话会将(state, infoCount, infoList)这些参数传入进去进行查找</li>
+<li>call_load_methods:上面的load_images_nolock返回的found为true的话会通过这个函数调用load methods</li>
+</ul>
+<h3 id="load-images-nolock"><a href="#load-images-nolock" class="headerlink" title="load_images_nolock"></a>load_images_nolock</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/***********************************************************************</div><div class="line">* load_images_nolock</div><div class="line">* Prepares +load in the given images which are being mapped in by dyld.</div><div class="line">* Returns YES if there are now +load methods to be called by call_load_methods.</div><div class="line">*</div><div class="line">* Locking: loadMethodLock(both) and runtimeLock(new) acquired by load_images</div><div class="line">**********************************************************************/</div><div class="line">bool </div><div class="line">load_images_nolock(enum dyld_image_states state,uint32_t infoCount,</div><div class="line">                   const struct dyld_image_info infoList[])</div><div class="line">&#123;</div><div class="line">    bool found = NO;</div><div class="line">    uint32_t i;</div><div class="line"></div><div class="line">    i = infoCount;</div><div class="line">    while (i--) &#123;</div><div class="line">        const headerType *mhdr = (headerType*)infoList[i].imageLoadAddress;</div><div class="line">        if (!hasLoadMethods(mhdr)) continue;</div><div class="line"></div><div class="line">        prepare_load_methods(mhdr);</div><div class="line">        found = YES;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return found;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="prepare-load-methods"><a href="#prepare-load-methods" class="headerlink" title="prepare_load_methods"></a>prepare_load_methods</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">void prepare_load_methods(const headerType *mhdr)</div><div class="line">&#123;</div><div class="line">    size_t count, i;</div><div class="line"></div><div class="line">    runtimeLock.assertWriting();</div><div class="line"></div><div class="line">    classref_t *classlist = </div><div class="line">        _getObjc2NonlazyClassList(mhdr, &amp;count);</div><div class="line">    for (i = 0; i &lt; count; i++) &#123;</div><div class="line">        schedule_class_load(remapClass(classlist[i]));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    category_t **categorylist = _getObjc2NonlazyCategoryList(mhdr, &amp;count);</div><div class="line">    for (i = 0; i &lt; count; i++) &#123;</div><div class="line">        category_t *cat = categorylist[i];</div><div class="line">        Class cls = remapClass(cat-&gt;cls);</div><div class="line">        if (!cls) continue;  // category for ignored weak-linked class</div><div class="line">        realizeClass(cls);</div><div class="line">        assert(cls-&gt;ISA()-&gt;isRealized());</div><div class="line">        add_category_to_loadable_list(cat);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>prepare_load_methods:这个函数比较重要而且也可以看到classlist是优先于categorylist，也就是class的load方法会先于category的load添加到load list当中</p>
+<h3 id="schedule-class-load"><a href="#schedule-class-load" class="headerlink" title="schedule_class_load"></a>schedule_class_load</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/***********************************************************************</div><div class="line">* prepare_load_methods</div><div class="line">* Schedule +load for classes in this image, any un-+load-ed </div><div class="line">* superclasses in other images, and any categories in this image.</div><div class="line">**********************************************************************/</div><div class="line">// Recursively schedule +load for cls and any un-+load-ed superclasses.</div><div class="line">// cls must already be connected.</div><div class="line">static void schedule_class_load(Class cls)</div><div class="line">&#123;</div><div class="line">    if (!cls) return;</div><div class="line">    assert(cls-&gt;isRealized());  // _read_images should realize</div><div class="line"></div><div class="line">    if (cls-&gt;data()-&gt;flags &amp; RW_LOADED) return;</div><div class="line"></div><div class="line">    // Ensure superclass-first ordering</div><div class="line">    schedule_class_load(cls-&gt;superclass);</div><div class="line"></div><div class="line">    add_class_to_loadable_list(cls);</div><div class="line">    cls-&gt;setInfo(RW_LOADED); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>schedule_class_load:上面这个函数可以看到在classlist添加的时候是会先(schedule_class_load(cls-&gt;superclass);)添加父类的load方法然后才是add_class_to_loadable_list和add_category_to_loadable_list</p>
+<p>通过以上分析可以得出+（void）load函数在不同的类中的执行顺序：</p>
+<ul>
+<li>load方法的执行顺序是先添加父类的load方法执行后面是子类的，再之后是category的load方法</li>
+<li>注意一点的是父类和子类的load方法是先父类后子类，但是category这个不管是父类有还是子类有，父类和子类的category的load方法的执行顺序并不是先父类后子类二而是根据（compile source）这个的添加顺序来确定的，添加在上面的category，load方法会先执行</li>
+</ul>
+<h3 id="call-load-methods"><a href="#call-load-methods" class="headerlink" title="call_load_methods"></a>call_load_methods</h3><p>这个函数就是调用load methods最终函数，看下源码实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">/***********************************************************************</div><div class="line">* call_load_methods</div><div class="line">* Call all pending class and category +load methods.</div><div class="line">* Class +load methods are called superclass-first. </div><div class="line">* Category +load methods are not called until after the parent class&apos;s +load.</div><div class="line">* </div><div class="line">* This method must be RE-ENTRANT, because a +load could trigger </div><div class="line">* more image mapping. In addition, the superclass-first ordering </div><div class="line">* must be preserved in the face of re-entrant calls. Therefore, </div><div class="line">* only the OUTERMOST call of this function will do anything, and </div><div class="line">* that call will handle all loadable classes, even those generated </div><div class="line">* while it was running.</div><div class="line">*</div><div class="line">* The sequence below preserves +load ordering in the face of </div><div class="line">* image loading during a +load, and make sure that no </div><div class="line">* +load method is forgotten because it was added during </div><div class="line">* a +load call.</div><div class="line">* Sequence:</div><div class="line">* 1. Repeatedly call class +loads until there aren&apos;t any more</div><div class="line">* 2. Call category +loads ONCE.</div><div class="line">* 3. Run more +loads if:</div><div class="line">*    (a) there are more classes to load, OR</div><div class="line">*    (b) there are some potential category +loads that have </div><div class="line">*        still never been attempted.</div><div class="line">* Category +loads are only run once to ensure &quot;parent class first&quot; </div><div class="line">* ordering, even if a category +load triggers a new loadable class </div><div class="line">* and a new loadable category attached to that class. </div><div class="line">*</div><div class="line">* Locking: loadMethodLock must be held by the caller </div><div class="line">*   All other locks must not be held.</div><div class="line">**********************************************************************/</div><div class="line">void call_load_methods(void)</div><div class="line">&#123;</div><div class="line">    static bool loading = NO;</div><div class="line">    bool more_categories;</div><div class="line"></div><div class="line">    loadMethodLock.assertLocked();</div><div class="line"></div><div class="line">    // Re-entrant calls do nothing; the outermost call will finish the job.</div><div class="line">    if (loading) return;</div><div class="line">    loading = YES;</div><div class="line"></div><div class="line">    void *pool = objc_autoreleasePoolPush();</div><div class="line"></div><div class="line">    do &#123;</div><div class="line">        // 1. Repeatedly call class +loads until there aren&apos;t any more</div><div class="line">        while (loadable_classes_used &gt; 0) &#123;</div><div class="line">            call_class_loads();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 2. Call category +loads ONCE</div><div class="line">        more_categories = call_category_loads();</div><div class="line"></div><div class="line">        // 3. Run more +loads if there are classes OR more untried categories</div><div class="line">    &#125; while (loadable_classes_used &gt; 0  ||  more_categories);</div><div class="line"></div><div class="line">    objc_autoreleasePoolPop(pool);</div><div class="line"></div><div class="line">    loading = NO;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>call_load_methods：上面这个函数可以看到call_load_methods是在一个autorereleasepool中进行调用的自动管理引用计数，其中两个关键的函数如下</p>
+<ul>
+<li>call_class_loads:这个就是调用类的load方法,</li>
+<li>call_category_loads:这个就是调用了category的load方法</li>
+</ul>
+<blockquote>
+<p>   上述两个方法最终执行的时候是以</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(*load_method)(cls, SEL_load);</div></pre></td></tr></table></figure>
+<p>方式进行执行的,直接调用函数指针去执行load方法而不是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(objc_msgSend)</div></pre></td></tr></table></figure>
+<p>这种发消息的方式</p>
+<h2 id="load简单总结"><a href="#load简单总结" class="headerlink" title="load简单总结"></a>load简单总结</h2><ul>
+<li>开始先dyld加载动态类库，后续通过imageloader将这些类，以及可执行文件等等符号化</li>
+<li>dyld工作完成之后runtime开始，首先objc_init进行objc和runtime的入口初始化，</li>
+<li>runtime开始调用load方法系列中的函数,几个会用到的函数如下<br>load_images<br>hasLoadMethods<br>prepare_load_methods<br>schedule_class_load<br>add_class_to_loadable_list<br>add_category_to_loadable_list<br>call_load_methods</li>
+</ul>
+<p>参考链接：<br><a href="http://www.jianshu.com/p/c4987bc00963" target="_blank" rel="external">http://www.jianshu.com/p/c4987bc00963</a><br><a href="http://blog.sunnyxx.com/2014/08/30/objc-pre-main/" target="_blank" rel="external">http://blog.sunnyxx.com/2014/08/30/objc-pre-main/</a><br><a href="http://www.jianshu.com/p/872447c6dc3f" target="_blank" rel="external">http://www.jianshu.com/p/872447c6dc3f</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/23/2017/2017-02-23-traffic-raiders-for-kansai-tourist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="anranos">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="卸载重装">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/23/2017/2017-02-23-traffic-raiders-for-kansai-tourist/" itemprop="url">关西旅行交通攻略</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
             
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-23T00:41:20+08:00">
+                2017-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>2017年1月份，我和老婆带着未满3岁的儿子，从珠海出发，经由香港机场飞往日本大阪关西机场，并在大阪、京都、神户自由行了一个礼拜。</p>
+<p>机票、酒店和游玩的行程安排都是老婆负责，而我负责的部分是游玩过程中的交通，结果只能算勉强及格，至少没走丢；这里我要分享的就是些关西旅行交通方面的经验教训。</p>
+<h2 id="地图应用"><a href="#地图应用" class="headerlink" title="地图应用"></a>地图应用</h2><p>说交通怎么能不先说地图呢？我使用Google Map，需要提前买个日本3G上网卡；无论是地铁还是公交车，Google Map都能比较好的导航到搭车的地方，还有列车时刻表；你可以选择不同的地铁或公交线路；有个特别好的是，你在搭地铁的过程中，如果听不懂日语报站名，或者有些列车没有电子指示当前到哪一站了，这个时候你拿出手机看下Google Map，之前搜索的地铁路线包含了各个途径地铁站的名字和你当前的位置，非常实用。</p>
+<h2 id="关西的铁路交通"><a href="#关西的铁路交通" class="headerlink" title="关西的铁路交通"></a>关西的铁路交通</h2><p>日本的铁路交通太发达了，所以铁路交通也是关西旅行交通的重头戏。</p>
+<p>如果对日本的铁路交通完全没有概念的话，我建议先看下这个网站：<a href="https://www.westjr.co.jp/global/sc/" target="_blank" rel="external">西日本旅客铁道株式会社</a>，这是JR-West的官方网站，有中文版；我是回国之后整理攻略才知道的这个网站，后悔莫及，网上各种攻略很多，但都没这个全面实用，走了不少弯路。</p>
+<p>JR只是日本众多铁路公司中的一个，不过乘车的规则什么的基本都是类似的，所以你看了JR的乘车指南，再搭乘其他公司的铁路交通，会比较轻车熟路。</p>
+<h3 id="列车种类"><a href="#列车种类" class="headerlink" title="列车种类"></a>列车种类</h3><p>官方分类看这里：<a href="https://www.westjr.co.jp/global/sc/howto/train_01.html#fqtop" target="_blank" rel="external">列车种类</a></p>
+<p>高铁(新幹線)、特快(特急列車)、快速(急行列車)、管内快速(新快速)、普快(快速)、普客(普通列車)</p>
+<p>这么多分类，我自己搭乘后的经验是，其实就分三类就够了：<br>新干线、急行、普通。</p>
+<p>不同类型的列车，除了车票价格的区别，买票方式上也有区别：<br>新干线需要单独买票，不能刷卡；<br>急行和普通的可以先刷IC卡进站，想要快的话，看到急行车上车后再补票，只是不一定能补到指定席。</p>
+<h3 id="车票分类"><a href="#车票分类" class="headerlink" title="车票分类"></a>车票分类</h3><p>关键字：乘车券、自由席、指定席、急行券、新干线</p>
+<p>在日本搭乘铁路交通，你至少需要“乘车券”；<br>在购票时你可以选择是自由席还是指定席；<br>而如果你想要搭乘急行或快速的列车，你还需要购买“急行券”；</p>
+<p>上述几个选项是可以组合的，最便宜的是自由席乘车券，最贵的是指定席急行券；<br>需要注意的是并不是每个路线都有急行列车，需要提前查好车次；<br>还有就是日本的快车和慢车都是在同一个乘车站台，做错慢车的话很有可能早上车却更晚到达目的地。</p>
+<p>还是没看明白的，可以看下JR-West的相关说明：<a href="https://www.westjr.co.jp/global/sc/howto/ticket_02.html#fq07" target="_blank" rel="external">搭乘JR-West的方法 购买车票</a></p>
+<h3 id="交通IC卡"><a href="#交通IC卡" class="headerlink" title="交通IC卡"></a>交通IC卡</h3><p>各种日本旅行攻略里经常提到的交通IC卡主要是Suica和ICOCA，这两种卡目前都已经是日本全国通用了。</p>
+<p>两个单词的读音可以提前学习下，因为这个卡的使用频率非常高：</p>
+<blockquote>
+<p>Suica（スイカ），读音类似：[su i ga]<br>ICOCA（イコカ），读音类似：[i ko ga]</p>
+</blockquote>
+<p>我用的是ICOCA，关西机场自动售卖机上能买到的也就是这个了，除了新干线需要单独购买乘车券，其他铁路只要不是指定席或者急行券，都可以直接刷卡上车，不用单独买票；另外市内公交车和便利店也能刷ICOCA。</p>
+<h3 id="ICOCA-amp-HARUKA"><a href="#ICOCA-amp-HARUKA" class="headerlink" title="ICOCA &amp; HARUKA"></a>ICOCA &amp; HARUKA</h3><p>因为我们的到达机场是关西机场，第一站去的是京都，这里说下从关西机场到京都最快最划算的方式：ICOCA &amp; HARUKA</p>
+<p>官方介绍看这里：<a href="https://www.westjr.co.jp/global/sc/ticket/icoca-haruka/" target="_blank" rel="external">ICOCA &amp; HARUKA</a></p>
+<p>这个有多快捷呢？<br>从关西机场到京都站，这是最快的方式，没有之一。</p>
+<p>这个有多划算呢？<br>从关西机场搭大巴车到京都应该是要1800日元，而这个ICOCA &amp; HARUKA折扣券是1600日元。</p>
+<p>又快又便宜，哪来这么好的事情；<br>原因在于他是和ICOCA卡捆绑销售的；<br>ICOCA本身第一次购买的话是需要2000日元，其中包含500日元押金；<br>虽然是捆绑销售，但是我上面提到了ICOCA和Suica已经全日本通用，而且便利店买东西也能用，其实2000日元很快就花完了的，万一万一花不完还可以退卡（虽然我不推荐退卡）。</p>
+<p>特别要注意的是购买方法：只能在JR的绿色办公室里面购买！<br>关西机场的JR绿色办公室就在JR地铁入口的对面，在一排自动售卖机的右手边，进去找人买就对了，在自动售卖机上是买不到的（T_T）。</p>
+<h3 id="儿童乘车"><a href="#儿童乘车" class="headerlink" title="儿童乘车"></a>儿童乘车</h3><p>12岁以上算大人、6岁至11岁算儿童、1岁至5岁算幼儿、未满1岁算婴儿；<br>每名大人最多可免费携带2名幼儿同行；<br>简单说就是5岁以下的小朋友，大人带着不要钱，不用买票。</p>
+<p>这里再说下新干线买票的事情，因为我们当时带着小孩，没有买指定席，结果上车后带着小孩和行李换了好几次位置，乘务员说没办法补指定席的票，很麻烦，所以带小孩坐新干线的话最好直接买指定席。</p>
+<h2 id="公交车"><a href="#公交车" class="headerlink" title="公交车"></a>公交车</h2><p>我们只在京都坐了公交车，京都的东西南北分布着各种寺庙，但并不是每个寺庙都有地铁直达，这时候就需要市内公交发挥作用了。</p>
+<p>提前用Google Map查好公交转乘的路线，还是挺方便的。</p>
+<p>Google Map的路线是没问题的，但公交车站台位置不是很准，如果你到了一个站台发现没有Google Map提示的那个公交线路站牌，比如说你要坐25路，结果站牌上怎么都找不到25路的站牌，那肯定是你走错公交站了，再找找看吧。</p>
+<p>坐公交车还需要注意的是，如果你下一站下车，到站之前记得按下车上随处可见的红色按钮（不骗你，真的是随处可见）。</p>
+<h2 id="的士"><a href="#的士" class="headerlink" title="的士"></a>的士</h2><p>都说日本打车贵，一开始都不太敢尝试，但是行李太多了，我们从酒店去京都站搭新干线的时候，还是打了个的士：</p>
+<blockquote>
+<p>3.2KM，1100日元，折合人民币60多块钱</p>
+</blockquote>
+<p>跟国内比肯定是贵很多，但是你要知道日本的地铁也不便宜；<br>我们还要拿着两件大行李，一个婴儿车，这么算的话价格还是可以接受的。</p>
+<p>的士作为一种交通途径，在合适的时候还是可以选用的，并不是天价。</p>
+<h2 id="长途大巴"><a href="#长途大巴" class="headerlink" title="长途大巴"></a>长途大巴</h2><p>我们从神户有马温泉去大阪的时候搭乘的是大巴车，车上10个人不到；<br>想不到的是大巴车上竟然没什么味道，更没有国内大巴车上那种无法描述的奇怪的大巴车味道……</p>
+<p>大巴车快到大阪的时候，最左边的车道堵车堵了大概有10公里，但是右边的两个车道都还在正常快速行驶；中间好几次我都在想为什么右边这么快，没有人变道？后面才知道这10多公里的车都在排队下高速，高速出口有点堵车，但是只堵了最左边的一条道而已，佩服。</p>
+<h2 id="交通IC卡充值"><a href="#交通IC卡充值" class="headerlink" title="交通IC卡充值"></a>交通IC卡充值</h2><p>地铁站买票的自动售卖机可以充值；<br>地铁站里面有精算机可以充值；<br>便利店可以充值。</p>
+<h2 id="关于问路"><a href="#关于问路" class="headerlink" title="关于问路"></a>关于问路</h2><p>日本人英语听力都还不错，只是不太愿意说，你要是英文好的话直接英文问路完全没问题。</p>
+<p>我的做法是，用有道翻译，把问路的关键字翻译成日语；注意是只是关键字而已，不要整个句子，因为我的实践结果告诉我，翻译句子比较坑；把关键字的日文给日本人看下，他们基本能猜猜八九不离十；实在不行再配合两句蹩脚的英语，嗯，应该可以了…… </p>
+<p>还不行的话你就比划比划或者试下眼神交流吧</p>
+<h2 id="对这次旅行交通的整体感受"><a href="#对这次旅行交通的整体感受" class="headerlink" title="对这次旅行交通的整体感受"></a>对这次旅行交通的整体感受</h2><p>准时，方便，不需要像国内那样预留太多的时间。</p>
+<p>费用方面，这次旅行在关西交通上的花费，只是旅行费用中比较小的一部分；<br>我们也没有使用更划算的周游券，主要是因为我们带着小孩，行程本来就不固定，而且我们是三个城市走马观花式的自由行，不太适合；</p>
+<p>只要行程确认，交通攻略上一个Google Map也就够了，还都是中文界面；<br>日本的交通很发达但也很规范，熟悉了规则之后会发现，日本的交通出行其实比你在国内一个陌生城市还要简单。</p>
+<p>== The End ==</p>
+
           
         
       
@@ -738,7 +1078,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -746,6 +1086,15 @@
 
           
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
