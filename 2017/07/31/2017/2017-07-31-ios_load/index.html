@@ -102,7 +102,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://wx4.sinaimg.cn/mw690/005Krugjly1fi40fucczbj321k0ywgvr.jpg">
 <meta property="og:image" content="http://wx3.sinaimg.cn/mw690/005Krugjly1fi386x1y85j30m80gumyv.jpg">
-<meta property="og:updated_time" content="2017-08-01T09:37:28.000Z">
+<meta property="og:updated_time" content="2017-08-01T09:42:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="+ (void)load方法详解">
 <meta name="twitter:description" content="前言：    之前在写代码的时候对于 + (void)load 这个方法很常见，一般理解为类初始化的时候会去调用，但其原理不甚明白这篇博客简要的介绍一下 + (void)load 的源码层面的分析  dyld 动态连接器dyld的介绍可以通过这篇文章(Mach-O 可执行文件)，简要来说就是它主要加载一些动态库，而且dyld共享缓存机制也缓解了加载多个动态库耗费时间长的问题 dyld共享缓存  当">
@@ -377,9 +377,7 @@
 <li>call_class_loads:这个就是调用类的load方法,</li>
 <li>call_category_loads:这个就是调用了category的load方法</li>
 </ul>
-<blockquote>
-<p>   上述两个方法最终执行的时候是以</p>
-</blockquote>
+<p>上述两个方法最终执行的时候是以</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(*load_method)(cls, SEL_load);</div></pre></td></tr></table></figure>
 <p>方式进行执行的,直接调用函数指针去执行load方法而不是</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(objc_msgSend)</div></pre></td></tr></table></figure>
@@ -389,7 +387,7 @@
 <li>dyld工作完成之后runtime开始，首先objc_init进行objc和runtime的入口初始化，</li>
 <li>runtime开始调用load方法系列中的函数,几个会用到的函数如下<br>load_images<br>hasLoadMethods<br>prepare_load_methods<br>schedule_class_load<br>add_class_to_loadable_list<br>add_category_to_loadable_list<br>call_load_methods</li>
 </ul>
-<p>参考链接：<br><a href="http://www.jianshu.com/p/c4987bc00963" target="_blank" rel="external">http://www.jianshu.com/p/c4987bc00963</a><br><a href="http://blog.sunnyxx.com/2014/08/30/objc-pre-main/" target="_blank" rel="external">http://blog.sunnyxx.com/2014/08/30/objc-pre-main/</a><br><a href="http://www.jianshu.com/p/872447c6dc3f" target="_blank" rel="external">http://www.jianshu.com/p/872447c6dc3f</a></p>
+<p>参考链接：<br><a href="http://www.jianshu.com/p/c4987bc00963" target="_blank" rel="external">http://www.jianshu.com/p/c4987bc00963</a><br><a href="http://blog.sunnyxx.com/2014/08/30/objc-pre-main/" target="_blank" rel="external">http://blog.sunnyxx.com/2014/08/30/objc-pre-main/</a><br><a href="http://www.jianshu.com/p/872447c6dc3f" target="_blank" rel="external">http://www.jianshu.com/p/872447c6dc3f</a><br><a href="http://www.jianshu.com/p/e25f992069b3" target="_blank" rel="external">http://www.jianshu.com/p/e25f992069b3</a></p>
 
       
     </div>

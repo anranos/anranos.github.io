@@ -826,9 +826,7 @@
 <li>call_class_loads:这个就是调用类的load方法,</li>
 <li>call_category_loads:这个就是调用了category的load方法</li>
 </ul>
-<blockquote>
-<p>   上述两个方法最终执行的时候是以</p>
-</blockquote>
+<p>上述两个方法最终执行的时候是以</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(*load_method)(cls, SEL_load);</div></pre></td></tr></table></figure>
 <p>方式进行执行的,直接调用函数指针去执行load方法而不是</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(objc_msgSend)</div></pre></td></tr></table></figure>
@@ -838,7 +836,7 @@
 <li>dyld工作完成之后runtime开始，首先objc_init进行objc和runtime的入口初始化，</li>
 <li>runtime开始调用load方法系列中的函数,几个会用到的函数如下<br>load_images<br>hasLoadMethods<br>prepare_load_methods<br>schedule_class_load<br>add_class_to_loadable_list<br>add_category_to_loadable_list<br>call_load_methods</li>
 </ul>
-<p>参考链接：<br><a href="http://www.jianshu.com/p/c4987bc00963" target="_blank" rel="external">http://www.jianshu.com/p/c4987bc00963</a><br><a href="http://blog.sunnyxx.com/2014/08/30/objc-pre-main/" target="_blank" rel="external">http://blog.sunnyxx.com/2014/08/30/objc-pre-main/</a><br><a href="http://www.jianshu.com/p/872447c6dc3f" target="_blank" rel="external">http://www.jianshu.com/p/872447c6dc3f</a></p>
+<p>参考链接：<br><a href="http://www.jianshu.com/p/c4987bc00963" target="_blank" rel="external">http://www.jianshu.com/p/c4987bc00963</a><br><a href="http://blog.sunnyxx.com/2014/08/30/objc-pre-main/" target="_blank" rel="external">http://blog.sunnyxx.com/2014/08/30/objc-pre-main/</a><br><a href="http://www.jianshu.com/p/872447c6dc3f" target="_blank" rel="external">http://www.jianshu.com/p/872447c6dc3f</a><br><a href="http://www.jianshu.com/p/e25f992069b3" target="_blank" rel="external">http://www.jianshu.com/p/e25f992069b3</a></p>
 
           
         
